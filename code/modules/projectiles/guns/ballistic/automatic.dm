@@ -221,8 +221,8 @@
 
 //Greasegun				Keywords: 9mm, Automatic, 30 rounds
 /obj/item/gun/ballistic/automatic/smg/greasegun
-	name = "Grease Gun"
-	desc = "An inexpensive submachine gun, downscaled and rechambered in 9mm. Very high rate of fire in bursts."
+	name = "9mm submachine gun"
+	desc = "An inexpensive submachine gun, chambered in 9mm. Very high rate of fire in bursts."
 	icon_state = "grease_gun"
 	item_state = "smg9mm"
 	mag_type = /obj/item/ammo_box/magazine/greasegun
@@ -264,7 +264,7 @@
 	return
 
 /obj/item/gun/ballistic/automatic/smg/greasegun/worn
-	name = "beat up M3A1 Grease Gun"
+	name = "beat up 9mm submachine gun"
 	desc = "What was once an inexpensive, but reliable submachine gun is now an inexpensive piece of shit. It's impressive this thing still fires at all."
 	can_attachments = FALSE
 	spread = 16.5
@@ -1006,7 +1006,21 @@
 	icon_state = "gold_sniper"
 	item_state = "gold_sniper"
 
-
+/obj/item/gun/ballistic/automatic/marksman/sniper/snipervenator
+	name = "Venator sniper rifle"
+	desc = "The customized sniper rifle, fitted with a telescopic sight for extreme accuracy and chambered for a high-ballistic performance centerfire cartridge. It is a superior version of the regular sniper rifle and is decorated with the flag of the bull and tokens of a hunt."
+	icon = 'icons/fallout/objects/guns/ballistic.dmi'
+	lefthand_file = 'icons/fallout/onmob/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/fallout/onmob/weapons/guns_righthand.dmi'
+	mob_overlay_icon = 'icons/fallout/onmob/backslot_weapon.dmi'
+	icon_state = "venator_sniper"
+	item_state = "venator_sniper"
+	fire_delay = 6
+	slowdown = 0.2
+	zoom_amt = 15
+	zoom_out_amt = 17
+	extra_penetration = 0.4
+	extra_damage = 45
 
 //////////////////
 //ASSAULT RIFLES//
@@ -1235,7 +1249,7 @@
 	automatic = 1
 	autofire_shot_delay = 3
 	mag_type = /obj/item/ammo_box/magazine/m762
-	spread = 12
+	spread = 10
 	recoil = 0.25
 	actions_types = list(/datum/action/item_action/toggle_firemode)
 	fire_sound = 'sound/f13weapons/assaultrifle_fire.ogg'
@@ -1308,11 +1322,11 @@
 	actions_types = null
 	fire_sound = 'sound/f13weapons/assaultrifle_fire.ogg'
 
-//LSW squad support weapon				Keywords: 5.56mm, Automatic, 20 (10-50) round magazine, Scoped, Damage decrease (bullethose)
+//LSW Squad Support Weapon				Keywords: 5.56mm, Automatic, 20 (10-50) round magazine, Scoped, Damage decrease (bullethose)
 /obj/item/gun/ballistic/automatic/lsw
-	name = "LSW (Light Support Weapon)"
+	name = "Light Support Weapon"
 	desc = "This squad-level support weapon has a bullpup design. The bullpup design makes it difficult to use while lying down. Because of this it was remanded to National Guard units. It, however, earned a reputation as a reliable weapon that packs a lot of punch for its size."
-	icon = 'icons/fallout/objects/guns/ballistic.dmi'
+	icon = 'icons/obj/guns/projectile.dmi'
 	lefthand_file = 'icons/fallout/onmob/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/fallout/onmob/weapons/guns_righthand.dmi'
 	icon_state = "lsw"
@@ -1321,6 +1335,8 @@
 	mag_type = /obj/item/ammo_box/magazine/m556/rifle
 	fire_delay = 4.5
 	burst_shot_delay = 2.25
+	is_automatic = TRUE
+	automatic = 1
 	extra_damage = 23
 	spread = 12
 	spawnwithmagazine = TRUE
@@ -1331,27 +1347,6 @@
 	can_scope = FALSE
 	actions_types = list(/datum/action/item_action/toggle_firemode)
 	fire_sound = 'sound/f13weapons/assaultrifle_fire.ogg'
-
-/obj/item/gun/ballistic/automatic/lsw/burst_select()
-	var/mob/living/carbon/human/user = usr
-	switch(select)
-		if(0)
-			select += 1
-			burst_size = 2
-			spread = 10
-			extra_damage = 23
-			recoil = 0.25
-			to_chat(user, "<span class='notice'>You switch to burst fire.</span>")
-		if(1)
-			select = 0
-			burst_size = 4
-			spread = 14
-			extra_damage = 23
-			recoil = 0.5
-			to_chat(user, "<span class='notice'>You switch to full auto.</span>")
-	playsound(user, 'sound/weapons/empty.ogg', 100, 1)
-	update_icon()
-	return
 
 
 //M1919 Machinegun				Keywords: LEGION, .308, Automatic, 80 round belt. Special modifiers: damage decrease bullethose
@@ -1437,7 +1432,7 @@
 	item_state = "sniper"
 	slot_flags = SLOT_BACK
 	mag_type = /obj/item/ammo_box/magazine/m2mm
-	extra_damage = 55
+	extra_damage = 15
 	burst_size = 1
 	fire_delay = 10
 	zoomable = TRUE

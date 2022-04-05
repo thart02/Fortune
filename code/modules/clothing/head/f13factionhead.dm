@@ -186,26 +186,43 @@
 
 
 //Enclave
+/obj/item/clothing/head/helmet/f13/enclave
+	name = "officer hat"
+	desc = "A standard-issue Enclave officer's cap."
+	icon_state = "enclave"
+	item_color = "enclave"
+	armor = list("melee" = 27, "bullet" = 12, "laser" = 12, "energy" = 15, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 10, "acid" = 0)
 
-/obj/item/clothing/head/helmet/f13/helmet/enclave/science
+/obj/item/clothing/head/helmet/f13/enclave/Initialize() 
+	. = ..()
+	AddComponent(/datum/component/armor_plate)
+
+/obj/item/clothing/head/helmet/f13/enclave/usmcriot
+	name = "old United States Marine Corp riot helmet"
+	desc = "A pre-war riot armor helmet used by the USCM For various tasks and operations, it's handled the nuclear wasteland somewhat better than the rest of the armors you've seen."
+	icon_state = "modified_usmc_riot"
+	item_state = "modified_usmc_riot"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACIALHAIR|HIDEFACE
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	armor = list("melee" = 50, "bullet" = 50, "laser" = 40, "energy" = 22, "bomb" = 55, "bio" = 60, "rad" = 10, "fire" = 60, "acid" = 20)
+
+/obj/item/clothing/head/helmet/f13/enclave/science
 	name = "science beret"
 	desc = "Blue beret signifying the wearer is a Science Officer of the Enclave."
 	icon_state = "hat_enclave_science"
 	item_state = "hat_enclave_science"
 	flags_inv = HIDEEARS|HIDEFACE
 	flags_cover = null
-	armor = list("tier" = 1)
 
-/obj/item/clothing/head/helmet/f13/helmet/enclave/intel
+/obj/item/clothing/head/helmet/f13/enclave/intel
 	name = "intel beret"
 	desc = "Dark beret issued to Intelligence Officers of the Enclave."
 	icon_state = "hat_enclave_intel"
 	item_state = "hat_enclave_intel"
 	flags_inv = HIDEEARS|HIDEFACE
 	flags_cover = null
-	armor = list("tier" = 3)
 
-/obj/item/clothing/head/helmet/f13/helmet/enclave/peacekeeper
+/obj/item/clothing/head/helmet/f13/enclave/peacekeeper
 	name = "peacekeeper cap"
 	desc = "Reinforced field cap issued to the soldiers of the Enclave."
 	icon_state = "hat_enclave_peacekeeper"
@@ -216,12 +233,6 @@
 	dynamic_fhair_suffix = ""
 	armor = list("melee" = 27, "bullet" = 12, "laser" = 12, "energy" = 15, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 10, "acid" = 0)
 
-/obj/item/clothing/head/helmet/f13/enclave
-	name = "officer hat"
-	desc = "A standard-issue Enclave officer's cap."
-	icon_state = "enclave"
-	item_color = "enclave"
-	armor = list("melee" = 27, "bullet" = 12, "laser" = 12, "energy" = 15, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 10, "acid" = 0)
 
 /obj/item/clothing/head/helmet/f13/envirosuit
 	name = "enclave envirosuit hood"
@@ -328,6 +339,15 @@
 	icon_state = "legion-venator"
 	item_state = "legion-venator"
 	armor = list("melee" = 35, "bullet" = 35, "laser" = 15, "energy" = 10, "bomb" = 20, "bio" = 20, "rad" = 20, "fire" = 25, "acid" = 0)
+
+/obj/item/clothing/head/helmet/f13/legion/orator
+	name = "laurel wreath"
+	desc = "A laurel wreath is made of branches and leaves of the laurel, a type of evergreen shrub or small tree. This one appears to be out of metal,however. In Ancient Rome, it was worn on the head as a symbol of triumph."
+	icon_state = "legion-orator"
+	item_state = "legion-orator"
+	flags_inv = null
+	armor = list("melee" = 35, "bullet" = 35, "laser" = 15, "energy" = 10, "bomb" = 20, "bio" = 20, "rad" = 20, "fire" = 25, "acid" = 0)
+
 
 /obj/item/clothing/head/helmet/f13/legion/recruit/decan
 	name = "legion recruit decanus helmet"
@@ -439,8 +459,8 @@
 /obj/item/clothing/head/f13/ncr
 	name = "NCR trooper helmet"
 	desc = "A standard issue NCR steel helmet. Looks like you can write on it and strap a few items on the helmet band."
-	icon_state = "ncr_steelpot"
-	item_state = "ncr_steelpot"
+	icon_state = "ncr_old"
+	item_state = "ncr_old"
 	armor = list("melee" = 35, "bullet" = 40, "laser" = 20, "energy" = 20, "bomb" = 25, "bio" = 30, "rad" = 20, "fire" = 60, "acid" = 0)
 	strip_delay = 50
 	obj_flags = UNIQUE_RENAME
@@ -452,8 +472,8 @@
 /obj/item/clothing/head/f13/ncr/steelpot_goggles
 	name = "NCR storm helmet"
 	desc = "A standard issue NCR steel helmet, issued with an additional pair of storm goggles for weather resistance."
-	icon_state = "steelpot_goggles"
-	item_state = "steelpot_goggles"
+	icon_state = "ncr_goggles_helmet"
+	item_state = "ncr_goggles_helmet"
 	alt_toggle_message = "You push the goggles down "
 	can_toggle = 1
 	flags_inv = HIDEEARS
@@ -487,26 +507,42 @@
 /obj/item/clothing/head/f13/ncr/steelpot_med
 	name = "NCR medic helmet"
 	desc = "(III) A standard issue NCR steel helmet with the addition of decalling signifying a medic."
-	icon_state = "steelpot_med"
-	item_state = "steelpot_med"
+	icon_state = "ncr_old_med"
+	item_state = "ncr_old_med"
 
 /obj/item/clothing/head/f13/ncr/steelpot_mp
 	name = "NCR military police helmet"
 	desc = "A standard issue NCR steel helmet emblazoned with the initials of the military police."
-	icon_state = "steelpot_mp"
-	item_state = "steelpot_mp"
+	icon_state = "ncr_old_mp"
+	item_state = "ncr_old_mp"
 
 /obj/item/clothing/head/f13/ncr/steelpot_gambler
 	name = "NCR gambler helmet"
 	desc = "A standard issue NCR steel helmet. Stashed in the strap are decks of cards, dominoes and cigarettes for personal use."
-	icon_state = "steelpot_gambler"
-	item_state = "steelpot_gambler"
+	icon_state = "ncr_old_gambler"
+	item_state = "ncr_old_gambler"
 
 /obj/item/clothing/head/f13/ncr/steelpot_bandolier
 	name = "NCR bandolier helmet"
 	desc = "A standard issue NCR steel helmet. This one has clearly seen heavy use, as well as having additional bullets tucked into the strap."
-	icon_state = "steelpot_bandolier"
-	item_state = "steelpot_bandolier"
+	icon_state = "ncr_old_bandolier"
+	item_state = "ncr_old_bandolier"
+
+/obj/item/clothing/head/f13/ncr/standard/conscript
+	name = "NCR conscript helmet"
+	desc = "A standard issue NCR steel helmet. Looks like you can write on it and strap a few items on the helmet band."
+	icon_state = "ncr_old"
+	item_state = "ncr_old"
+	armor = list("melee" = 20, "bullet" = 30, "laser" = 10, "energy" = 20, "bomb" = 30, "bio" = 30, "rad" = 20, "fire" = 60, "acid" = 0)
+	toggle_message = "You pull the goggles down under "
+	alt_toggle_message = "You push the goggles up onto the "
+	can_toggle = 1
+	flags_inv = HIDEEARS
+	actions_types = list(/datum/action/item_action/toggle)
+	toggle_cooldown = 0
+	flags_cover = HEADCOVERSEYES
+	visor_flags_cover = HEADCOVERSEYES
+	dog_fashion = null
 
 /obj/item/clothing/head/f13/ncr_flapcap
 	name = "NCR field cap"
@@ -1081,7 +1117,7 @@
 
 obj/item/clothing/head/f13/army/beret
 	name = "US Army beret"
-	desc = "A black beret, standard issue for all US Army personnel, this one holds the generic Department of the Army beret flash."
+	desc = "A black beret, standard issue for all US Army personnel not authorised to wear a different beret."
 	icon = 'icons/fallout/clothing/hats.dmi'
 	mob_overlay_icon = 'icons/fallout/onmob/clothes/head.dmi'
 	icon_state = "army_beret"
@@ -1090,16 +1126,23 @@ obj/item/clothing/head/f13/army/beret
 
 /obj/item/clothing/head/f13/army/beret/airborne
 	name = "US Army airborne beret"
-	desc = "(A red beret, issued to US Army airborne forces, this one holds the beret flash of the 82nd Airborne Div, 1st BCT."
+	desc = "A red beret, issued to US Army Airborne personnel."
 	icon = 'icons/fallout/clothing/hats.dmi'
 	mob_overlay_icon = 'icons/fallout/onmob/clothes/head.dmi'
 	icon_state = "army_beret_airborne"
 	item_state = "army_beret_airborne"
 
+/obj/item/clothing/head/f13/army/beret/rangers
+	name = "US Army rangers beret"
+	desc = "A tan beret, issued to US Army Rangers."
+	icon = 'icons/fallout/clothing/hats.dmi'
+	mob_overlay_icon = 'icons/fallout/onmob/clothes/head.dmi'
+	icon_state = "army_beret_ranger"
+	item_state = "army_beret_ranger"
 
 /obj/item/clothing/head/f13/army/beret/specialforces
 	name = "US Army special forces beret"
-	desc = "(A green beret, issued to US Army special forces personnel, this one holds the beret flash of the 2nd Special Forces Group."
+	desc = "A green beret, issued to US Army Special Forces personnel."
 	icon = 'icons/fallout/clothing/hats.dmi'
 	mob_overlay_icon = 'icons/fallout/onmob/clothes/head.dmi'
 	icon_state = "army_beret_specialforces"
@@ -1260,7 +1303,7 @@ obj/item/clothing/head/f13/army/beret
 	icon_state = "enclave_cap"
 	item_state = "enclave_cap"
 	armor = list("melee" = 45, "bullet" = 45, "laser" = 45, "energy" = 40, "bomb" = 50, "bio" = 60, "rad" = 10, "fire" = 60, "acid" = 20) // On par with BoS Initiate
-	
+
 
 /obj/item/clothing/head/helmet/f13/combat/enclave
 	name = "enclave combat helmet"

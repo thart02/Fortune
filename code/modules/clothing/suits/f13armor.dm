@@ -199,7 +199,7 @@
 
 /obj/item/clothing/suit/armor/f13/combat/swat
 	name = "SWAT combat armor"
-	desc = " custom version of the pre-war combat armor, slimmed down and minimalist for domestic S.W.A.T. teams."
+	desc = "A custom version of the pre-war combat armor, slimmed down and minimalist for domestic S.W.A.T. teams."
 	icon_state = "armoralt"
 	item_state = "armoralt"
 	armor = list("melee" = 30, "bullet" = 50, "laser" = 30, "energy" = 20, "bomb" = 55, "bio" = 60, "rad" = 15, "fire" = 60, "acid" = 30, "wound" = 55)
@@ -266,19 +266,21 @@
 	var/powered = TRUE
 
 /obj/item/clothing/suit/armor/f13/power_armor/mob_can_equip(mob/user, mob/equipper, slot, disable_warning = 1)
-	var/mob/living/carbon/human/H = user
-	if(src == H.wear_suit) //Suit is already equipped
-		return ..()
-	if (!HAS_TRAIT(H, TRAIT_PA_WEAR) && slot == SLOT_WEAR_SUIT && requires_training)
-		to_chat(user, "<span class='warning'>You don't have the proper training to operate the power armor!</span>")
-		return 0
-	if(slot == SLOT_WEAR_SUIT && powered)
-		ADD_TRAIT(user, TRAIT_STUNIMMUNE,	"PA_stun_immunity")
-		ADD_TRAIT(user, TRAIT_PUSHIMMUNE,	"PA_push_immunity")
-		ADD_TRAIT(user, SPREAD_CONTROL,	"PA_spreadcontrol")
+    var/mob/living/carbon/human/H = user
+    if(src == H.wear_suit) //Suit is already equipped
+        return ..()
+    if (!HAS_TRAIT(H, TRAIT_PA_WEAR) && slot == SLOT_WEAR_SUIT && requires_training)
+        to_chat(user, "<span class='warning'>You don't have the proper training to operate the power armor!</span>")
+        return 0
+    if(slot == SLOT_WEAR_SUIT && powered)
+        ADD_TRAIT(user, TRAIT_STUNIMMUNE,    "PA_stun_immunity")
+        ADD_TRAIT(user, TRAIT_PUSHIMMUNE,    "PA_push_immunity")
+        ADD_TRAIT(user, SPREAD_CONTROL,    "PA_spreadcontrol")
 
-		return ..()
-	return
+        return ..()
+    if(slot == SLOT_WEAR_SUIT && !powered)
+        return ..()
+    return
 
 /obj/item/clothing/suit/armor/f13/power_armor/dropped(mob/user)
 	if(powered)
